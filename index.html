@@ -100,6 +100,19 @@
 
       position: relative;
       overflow: hidden;
+
+      /* ===== CORREÇÃO iOS/MOBILE (texto não corta) ===== */
+      line-height: 1.15;
+      min-height: 44px;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+
+      /* garante pseudo-elements abaixo do texto */
+      isolation: isolate;
+    }
+    .btn::before,
+    .btn::after{
+      z-index: 0;
     }
     .btn:hover{
       transform: translateY(-1px);
@@ -120,6 +133,7 @@
        - Mais verde
        - Mais 3D
        - Com animação (sem aumentar)
+       - CORRIGIDO para leitura no iPhone
        ========================= */
     .btn.whatsCta{
       color:#ffffff;
@@ -131,6 +145,9 @@
         0 0 0 1px rgba(255,255,255,.18) inset;
       transform: translateY(0);
       text-shadow: 0 1px 0 rgba(0,0,0,.22);
+
+      /* reforço iOS */
+      line-height: 1.15;
     }
     .btn.whatsCta::before{
       content:"";
@@ -138,9 +155,11 @@
       inset:1px;
       border-radius:999px;
       background: linear-gradient(180deg, rgba(255,255,255,.30), rgba(255,255,255,0) 55%);
-      opacity:.9;
+      /* ↓ reduz para não “lavar” o texto no Safari iOS */
+      opacity:.60;
       pointer-events:none;
-      mix-blend-mode: overlay;
+      /* ↓ evita blend que atrapalha legibilidade no iPhone */
+      mix-blend-mode: normal;
     }
     .btn.whatsCta::after{
       content:"";
@@ -366,7 +385,7 @@
       min-width:100%;
       position:relative;
       aspect-ratio: 16/9;
-      min-height: clamp(420px, 44vw, 760px); /* maior no desktop/notebook */
+      min-height: clamp(420px, 44vw, 760px);
       padding: 14px;
       background:
         radial-gradient(900px 320px at 20% 10%, rgba(181,29,46,.10), transparent 60%),
@@ -376,7 +395,7 @@
     .slide img{
       width:100%;
       height:100%;
-      object-fit: contain; /* foto inteira */
+      object-fit: contain;
       display:block;
       border-radius: 14px;
       filter: drop-shadow(0 14px 30px rgba(0,0,0,.10));
@@ -533,7 +552,7 @@
       /* MENOR NO MOBILE: proporcional e sem ficar gigante */
       .slide{
         aspect-ratio: 3/4;
-        min-height: clamp(280px, 78vw, 520px); /* menor no mobile */
+        min-height: clamp(280px, 78vw, 520px);
         padding: 10px;
       }
 
@@ -546,6 +565,15 @@
       .carousel{ border-radius: 0; }
 
       .mapFrame{ height:380px; }
+
+      /* ===== reforço de legibilidade no iPhone ===== */
+      .btn.whatsCta{
+        font-size: 13px;
+        letter-spacing: .15px;
+      }
+      .btn.whatsCta::before{
+        opacity: .50;
+      }
     }
 
     /* =========================
@@ -625,12 +653,10 @@
        ANIMAÇÕES (leve + elegante)
        ========================= */
 
-    /* Respeita quem prefere reduzir movimento */
     @media (prefers-reduced-motion: reduce){
       *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
     }
 
-    /* Keyframes */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -667,7 +693,6 @@
       }
     }
 
-    /* Entrada do Hero */
     .heroCard, .heroSide .sideCard{
       opacity: 0;
       animation: fadeUp .7s ease forwards;
@@ -676,7 +701,6 @@
     .heroSide .sideCard:nth-child(2){ animation-delay: .16s; }
     .heroSide .sideCard:nth-child(3){ animation-delay: .24s; }
 
-    /* Reveal no scroll (adicionado via JS com class .reveal) */
     .reveal{
       opacity: 0;
       transform: translateY(14px);
@@ -688,7 +712,6 @@
       transform: translateY(0);
     }
 
-    /* Microinterações em cards */
     .feature, .panel, .sideCard{
       transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
     }
@@ -697,30 +720,15 @@
       border-color: rgba(181,29,46,.22);
     }
 
-    /* Botões com “sheen” (reflexo) */
-    .btn::after{
-      content:"";
-      position:absolute;
-      top:-40%;
-      left:-60%;
-      width:48%;
-      height:180%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent);
-      transform: translateX(-120%) rotate(8deg);
-      opacity:0;
-      pointer-events:none;
-    }
     .btn:hover::after{
       animation: sheen .75s ease;
     }
 
-    /* Animação exclusiva do CTA do topo (sem mudar tamanho) */
     .btn.whatsCta{
       animation: ctaGlow 2.8s ease-in-out infinite;
       will-change: box-shadow, filter;
     }
 
-    /* Botão Whats flutuante com vida */
     .floatWhats{
       animation: floaty 3.6s ease-in-out infinite;
     }
@@ -728,12 +736,10 @@
       transform: translateY(0) scale(.98);
     }
 
-    /* Kicker/pílulas com leve “pulse” */
     .kicker, .softPill{
       animation: pulseSoft 3.2s ease-in-out infinite;
     }
 
-    /* Carrossel: troca mais “suave” e com fade leve do conteúdo */
     .track{ transition: transform .45s cubic-bezier(.2,.75,.15,1); }
     .slide img{
       opacity: .98;
@@ -743,11 +749,9 @@
       filter: drop-shadow(0 16px 34px rgba(0,0,0,.12));
     }
 
-    /* Dots com micro feedback */
     .dot{ transition: transform .12s ease, background .12s ease, border-color .12s ease; }
     .dot:hover{ transform: scale(1.12); }
 
-    /* “Pop” discreto quando o carrossel muda (JS adiciona .pop no .carouselWrap) */
     @keyframes pop {
       0%   { transform: scale(1); }
       50%  { transform: scale(1.008); }
@@ -1070,7 +1074,6 @@
         <div class="carouselWrap" aria-label="Carrossel de fotos">
           <div class="carousel" data-carousel>
             <div class="track" data-track>
-              <!-- Equipamento / impacto primeiro -->
               <div class="slide" data-slide>
                 <img loading="lazy" src="https://i.ibb.co/5x2z9w9K/ANNA-HAIR-56.jpg" alt="Anna Hair - Foto 56" />
                 <span class="slideLabel">Foto 1</span>
@@ -1088,7 +1091,6 @@
                 <span class="slideLabel">Foto 4</span>
               </div>
 
-              <!-- Ambiente / restante -->
               <div class="slide" data-slide>
                 <img loading="lazy" src="https://i.ibb.co/HDw0jGhz/ANNA-HAIR-17.jpg" alt="Anna Hair - Foto 17" />
                 <span class="slideLabel">Foto 5</span>
@@ -1314,4 +1316,5 @@
   </main>
 </body>
 </html>
+
 
