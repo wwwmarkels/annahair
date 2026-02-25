@@ -22,7 +22,6 @@
       --ok:#0c7a4b;
       --whats:#25D366;
 
-      /* Sombras rosas (suaves, mas visíveis) */
       --pinkSoft1: 0 18px 48px rgba(181,29,46,.14);
       --pinkSoft2: 0 10px 26px rgba(181,29,46,.12);
       --pinkSoft3: 0 6px 16px rgba(181,29,46,.10);
@@ -44,7 +43,6 @@
     a{ color:inherit; text-decoration:none; }
     .container{ width:min(1120px, 92vw); margin:0 auto; }
 
-    /* Header */
     header{
       position:sticky;
       top:0;
@@ -81,7 +79,6 @@
       background: rgba(255,255,255,.75);
     }
 
-    /* Buttons */
     .btn{
       display:inline-flex;
       align-items:center;
@@ -100,20 +97,14 @@
 
       position: relative;
       overflow: hidden;
-
-      /* ===== CORREÇÃO iOS/MOBILE (texto não corta) ===== */
       line-height: 1.15;
       min-height: 44px;
       -webkit-font-smoothing: antialiased;
       text-rendering: geometricPrecision;
-
-      /* garante pseudo-elements abaixo do texto */
       isolation: isolate;
     }
     .btn::before,
-    .btn::after{
-      z-index: 0;
-    }
+    .btn::after{ z-index: 0; }
     .btn:hover{
       transform: translateY(-1px);
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
@@ -128,13 +119,6 @@
       background: linear-gradient(135deg, rgba(37,211,102,.14), rgba(37,211,102,.07));
     }
 
-    /* =========================
-       BOTÃO "AGENDA NO WHATSAPP" MAIS DESTACADO (MESMO TAMANHO)
-       - Mais verde
-       - Mais 3D
-       - Com animação (sem aumentar)
-       - CORRIGIDO para leitura no iPhone
-       ========================= */
     .btn.whatsCta{
       color:#ffffff;
       border-color: rgba(37,211,102,.55);
@@ -145,9 +129,6 @@
         0 0 0 1px rgba(255,255,255,.18) inset;
       transform: translateY(0);
       text-shadow: 0 1px 0 rgba(0,0,0,.22);
-
-      /* reforço iOS */
-      line-height: 1.15;
     }
     .btn.whatsCta::before{
       content:"";
@@ -155,10 +136,8 @@
       inset:1px;
       border-radius:999px;
       background: linear-gradient(180deg, rgba(255,255,255,.30), rgba(255,255,255,0) 55%);
-      /* ↓ reduz para não “lavar” o texto no Safari iOS */
       opacity:.60;
       pointer-events:none;
-      /* ↓ evita blend que atrapalha legibilidade no iPhone */
       mix-blend-mode: normal;
     }
     .btn.whatsCta::after{
@@ -181,20 +160,18 @@
         0 0 0 1px rgba(255,255,255,.22) inset,
         0 0 0 6px rgba(37,211,102,.12);
     }
-    .btn.whatsCta:hover::after{
-      animation: sheen 1s ease;
-      opacity:1;
-    }
-    .btn.whatsCta:active{
-      transform: translateY(0);
-      box-shadow:
-        0 12px 28px rgba(0,0,0,.16),
-        0 6px 0 rgba(17,19,24,.10),
-        0 0 0 1px rgba(255,255,255,.18) inset;
-    }
+    .btn.whatsCta:hover::after{ animation: sheen 1s ease; opacity:1; }
 
-    /* Hero */
-    .hero{ padding:44px 0 18px; }
+    section{ padding:34px 0; }
+    .sectionHead{ margin-bottom:14px; }
+    .sectionHead h2{
+      margin:0 0 6px;
+      font-size: clamp(22px, 2.4vw, 30px);
+      letter-spacing:-.2px;
+    }
+    .sectionHead p{ margin:0; color:var(--muted); max-width: 80ch; }
+
+    .hero{ padding:22px 0 8px; }
     .heroGrid{
       display:grid;
       grid-template-columns: 1.12fr .88fr;
@@ -260,7 +237,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: 0 12px 30px rgba(0,0,0,.06);
-      padding:18px;
+      padding:14px;
     }
     .sideTitle{
       display:flex;
@@ -268,32 +245,28 @@
       justify-content:space-between;
       gap:10px;
       font-weight:900;
-      margin:0 0 10px;
+      margin:0 0 8px;
+      font-size:14px;
     }
     .badge{
-      font-size:12px;
+      font-size:11px;
       font-weight:900;
-      padding:6px 10px;
+      padding:5px 9px;
       border-radius:999px;
       background: rgba(12,122,75,.10);
       border: 1px solid rgba(12,122,75,.16);
       color: var(--ok);
       white-space:nowrap;
     }
-    .list{ margin:0; padding-left:18px; color:var(--muted); }
-    .list li{ margin:8px 0; }
-
-    /* Sections */
-    section{ padding:34px 0; }
-    .sectionHead{ margin-bottom:14px; }
-    .sectionHead h2{
-      margin:0 0 6px;
-      font-size: clamp(22px, 2.4vw, 30px);
-      letter-spacing:-.2px;
+    .list{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
     }
-    .sectionHead p{ margin:0; color:var(--muted); max-width: 80ch; }
+    .list li{ margin:6px 0; }
 
-    /* Features */
     .grid3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -310,7 +283,6 @@
     .feature h3{ margin:0 0 6px; font-size:16px; letter-spacing:-.1px; }
     .feature p{ margin:0; color:var(--muted); font-size:14px; }
 
-    /* Two columns */
     .grid2{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -328,7 +300,6 @@
     .panel ul{ margin:0; padding-left:18px; color:var(--muted); }
     .panel li{ margin:7px 0; }
 
-    /* Pricing */
     .pricing{
       background: rgba(255,255,255,.88);
       border: 1px solid var(--line);
@@ -359,7 +330,6 @@
       background: rgba(255,255,255,.65);
     }
 
-    /* Portfolio Carousel */
     .carouselWrap{
       background: rgba(255,255,255,.88);
       border: 1px solid var(--line);
@@ -379,13 +349,11 @@
       transition: transform .35s ease;
       will-change: transform;
     }
-
-    /* MAIS VISÍVEL NO NOTEBOOK: maior + respiro + fundo mais bonito */
     .slide{
       min-width:100%;
       position:relative;
       aspect-ratio: 16/9;
-      min-height: clamp(420px, 44vw, 760px);
+      min-height: clamp(360px, 40vw, 720px);
       padding: 14px;
       background:
         radial-gradient(900px 320px at 20% 10%, rgba(181,29,46,.10), transparent 60%),
@@ -401,19 +369,10 @@
       filter: drop-shadow(0 14px 30px rgba(0,0,0,.10));
     }
 
-    .slideLabel{
-      position:absolute;
-      left:14px;
-      bottom:14px;
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:900;
-      font-size:12px;
-      color:#fff;
-      background: rgba(17,19,24,.42);
-      border: 1px solid rgba(255,255,255,.18);
-      backdrop-filter: blur(8px);
+    .carouselWrapHero .slide{
+      min-height: clamp(300px, 32vw, 560px);
     }
+
     .carControls{
       display:flex;
       align-items:center;
@@ -467,7 +426,6 @@
       box-shadow: 0 14px 34px rgba(0,0,0,.10);
     }
 
-    /* CTA block */
     .ctaBlock{
       background:
         radial-gradient(900px 360px at 20% 0%, rgba(181,29,46,.16), transparent 65%),
@@ -486,7 +444,6 @@
     .ctaBlock h3{ margin:0 0 4px; font-size:18px; letter-spacing:-.1px; }
     .ctaBlock p{ margin:0; color:var(--muted); max-width: 72ch; }
 
-    /* Mapa responsivo */
     .mapFrame{
       width:100%;
       height:340px;
@@ -496,7 +453,6 @@
       background: rgba(255,255,255,.7);
     }
 
-    /* Footer */
     footer{ padding:28px 0 88px; color:var(--muted); font-size:13px; }
     .footerGrid{
       display:grid;
@@ -507,7 +463,6 @@
       padding-top:18px;
     }
 
-    /* Floating WhatsApp button */
     .floatWhats{
       position:fixed;
       right:16px;
@@ -531,56 +486,7 @@
     }
     .whatsFab svg{ width:26px; height:26px; }
 
-    /* Mobile-first improvements */
-    @media (max-width: 920px){
-      .nav{ display:none; }
-      .heroGrid{ grid-template-columns: 1fr; }
-      .grid3{ grid-template-columns: 1fr; }
-      .grid2{ grid-template-columns: 1fr; }
-      .hero{ padding:30px 0 10px; }
-      .heroCard{ padding:18px; }
-      .sideCard{ padding:16px; }
-      section{ padding:26px 0; }
-      .btn{ padding:12px 14px; }
-      .carControls{ gap:10px; }
-      .iconBtn{ width:44px; height:44px; }
-      .footerGrid{ grid-template-columns: 1fr; }
-      footer{ padding-bottom: 104px; }
-      .floatWhats{ right:14px; bottom:14px; }
-      .whatsFab{ width:58px; height:58px; }
-
-      /* MENOR NO MOBILE: proporcional e sem ficar gigante */
-      .slide{
-        aspect-ratio: 3/4;
-        min-height: clamp(280px, 78vw, 520px);
-        padding: 10px;
-      }
-
-      .carouselWrap{
-        width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-        border-radius: 0;
-      }
-      .carousel{ border-radius: 0; }
-
-      .mapFrame{ height:380px; }
-
-      /* ===== reforço de legibilidade no iPhone ===== */
-      .btn.whatsCta{
-        font-size: 13px;
-        letter-spacing: .15px;
-      }
-      .btn.whatsCta::before{
-        opacity: .50;
-      }
-    }
-
-    /* =========================
-       AJUSTES FINAIS
-       ========================= */
-
-    /* Sombras rosas suaves e perceptíveis nos cards */
+    /* Sombras rosas */
     .heroCard,
     .sideCard,
     .feature,
@@ -593,8 +499,6 @@
         var(--pinkSoft2),
         var(--pinkSoft3);
     }
-
-    /* Glow rosa levemente mais forte no hero e no carrossel */
     .heroCard,
     .carouselWrap{
       box-shadow:
@@ -602,8 +506,6 @@
         var(--pinkSoft1),
         var(--pinkSoft2);
     }
-
-    /* Fundo do carrossel com brilho rosa discreto */
     .carousel{
       background:
         radial-gradient(900px 340px at 20% 0%, rgba(181,29,46,.12), transparent 62%),
@@ -611,7 +513,6 @@
         rgba(0,0,0,.03);
     }
 
-    /* Botão flutuante “premium” */
     .whatsFab{
       background: linear-gradient(180deg, #2ee874, #1fbf5a);
       box-shadow:
@@ -628,239 +529,177 @@
       opacity:.55;
       pointer-events:none;
     }
-    .whatsFab:hover{
-      transform: translateY(-2px);
-      box-shadow:
-        0 24px 56px rgba(0,0,0,.26),
-        0 24px 56px rgba(181,29,46,.18);
-    }
 
-    .softPill{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      background: rgba(181,29,46,.08);
-      border: 1px solid rgba(181,29,46,.16);
-      color:#7d0f1b;
-      font-weight:900;
-      font-size:12px;
-      letter-spacing:.2px;
-    }
+    /* ✅ Imagens do conforto: desktop = 2 colunas (como está); mobile = carrossel */
+    .comfortPhotosDesktop{ display:block; }
+    .comfortPhotosMobile{ display:none; }
 
-    /* =========================
-       ANIMAÇÕES (leve + elegante)
-       ========================= */
+    @media (max-width: 920px){
+      .nav{ display:none; }
+      .heroGrid{ grid-template-columns: 1fr; }
+      .grid3{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+
+      .hero{ padding:22px 0 8px; }
+      .heroCard{ padding:18px; }
+      section{ padding:24px 0; }
+      .btn{ padding:12px 14px; }
+
+      .slide{
+        aspect-ratio: 3/4;
+        min-height: clamp(260px, 78vw, 520px);
+        padding: 10px;
+      }
+      .carouselWrapHero .slide{
+        min-height: clamp(240px, 70vw, 420px);
+      }
+
+      .carouselWrap{
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        border-radius: 0;
+      }
+      .carousel{ border-radius: 0; }
+
+      .mapFrame{ height:380px; }
+
+      .btn.whatsCta{
+        font-size: 13px;
+        letter-spacing: .15px;
+      }
+
+      /* ✅ Mobile: mostra carrossel / oculta 2 colunas */
+      .comfortPhotosDesktop{ display:none; }
+      .comfortPhotosMobile{ display:block; }
+    }
 
     @media (prefers-reduced-motion: reduce){
       *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes floaty {
-      0%,100% { transform: translateY(0); }
-      50%     { transform: translateY(-6px); }
-    }
     @keyframes sheen {
       0%   { transform: translateX(-120%) rotate(8deg); opacity: 0; }
       30%  { opacity: .6; }
       100% { transform: translateX(160%) rotate(8deg); opacity: 0; }
-    }
-    @keyframes pulseSoft {
-      0%,100% { transform: translateY(0) scale(1); }
-      50%     { transform: translateY(-1px) scale(1.015); }
-    }
-    @keyframes ctaGlow {
-      0%,100% {
-        box-shadow:
-          0 16px 36px rgba(0,0,0,.18),
-          0 10px 0 rgba(17,19,24,.10),
-          0 0 0 1px rgba(255,255,255,.18) inset,
-          0 0 0 0 rgba(37,211,102,.00);
-        filter: saturate(1.0);
-      }
-      50% {
-        box-shadow:
-          0 18px 42px rgba(0,0,0,.19),
-          0 10px 0 rgba(17,19,24,.10),
-          0 0 0 1px rgba(255,255,255,.22) inset,
-          0 0 0 8px rgba(37,211,102,.12);
-        filter: saturate(1.08);
-      }
-    }
-
-    .heroCard, .heroSide .sideCard{
-      opacity: 0;
-      animation: fadeUp .7s ease forwards;
-    }
-    .heroSide .sideCard:nth-child(1){ animation-delay: .08s; }
-    .heroSide .sideCard:nth-child(2){ animation-delay: .16s; }
-    .heroSide .sideCard:nth-child(3){ animation-delay: .24s; }
-
-    .reveal{
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity .55s ease, transform .55s ease;
-      will-change: opacity, transform;
-    }
-    .reveal.in{
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .feature, .panel, .sideCard{
-      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
-    }
-    .feature:hover, .panel:hover, .sideCard:hover{
-      transform: translateY(-2px);
-      border-color: rgba(181,29,46,.22);
-    }
-
-    .btn:hover::after{
-      animation: sheen .75s ease;
-    }
-
-    .btn.whatsCta{
-      animation: ctaGlow 2.8s ease-in-out infinite;
-      will-change: box-shadow, filter;
-    }
-
-    .floatWhats{
-      animation: floaty 3.6s ease-in-out infinite;
-    }
-    .whatsFab:active{
-      transform: translateY(0) scale(.98);
-    }
-
-    .kicker, .softPill{
-      animation: pulseSoft 3.2s ease-in-out infinite;
-    }
-
-    .track{ transition: transform .45s cubic-bezier(.2,.75,.15,1); }
-    .slide img{
-      opacity: .98;
-      transition: transform .35s ease, opacity .35s ease, filter .35s ease;
-    }
-    .carousel:hover .slide img{
-      filter: drop-shadow(0 16px 34px rgba(0,0,0,.12));
-    }
-
-    .dot{ transition: transform .12s ease, background .12s ease, border-color .12s ease; }
-    .dot:hover{ transform: scale(1.12); }
-
-    @keyframes pop {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.008); }
-      100% { transform: scale(1); }
-    }
-    .carouselWrap.pop{
-      animation: pop .22s ease;
     }
   </style>
 </head>
 
 <body>
   <script>
-    // WhatsApp: usar exatamente este link em TODOS os botões
     const WHATS_LINK = "https://wa.me/5541995711130?text=Ol%C3%A1%2C%20vim%20pelo%20Google%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es.";
     const WHATS_TEXT = "Olá, vim pelo Google e gostaria de mais informações.";
-
-    // Carrossel
     const CAROUSEL_AUTOPLAY_MS = 3200;
 
     window.addEventListener("DOMContentLoaded", () => {
-      // Direciona TODOS os botões/links com data-whats (inclui o flutuante)
       document.querySelectorAll("[data-whats]").forEach(a => a.setAttribute("href", WHATS_LINK));
       document.querySelectorAll("[data-whats-text]").forEach(el => el.textContent = WHATS_TEXT);
 
-      // ===== Reveal no scroll (cards/sections) =====
-      const revealTargets = document.querySelectorAll(
-        ".heroCard, .sideCard, .feature, .panel, .pricing, .carouselWrap, .ctaBlock, .sectionHead, footer"
-      );
-      revealTargets.forEach(el => el.classList.add("reveal"));
+      const setupCarousel = ({
+        rootSel, trackSel, dotsSel, prevSel, nextSel, slideSel, wrapSel
+      }) => {
+        const track = document.querySelector(trackSel);
+        const dotsWrap = document.querySelector(dotsSel);
+        const prevBtn = document.querySelector(prevSel);
+        const nextBtn = document.querySelector(nextSel);
+        const slides = Array.from(document.querySelectorAll(slideSel));
+        const carousel = document.querySelector(rootSel);
+        const carouselWrap = document.querySelector(wrapSel);
 
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in");
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
+        if (!track || slides.length === 0 || !carousel) return;
 
-      revealTargets.forEach(el => io.observe(el));
+        let index = 0;
+        let timer = null;
+        let startX = 0;
 
-      const track = document.querySelector("[data-track]");
-      const dotsWrap = document.querySelector("[data-dots]");
-      const prevBtn = document.querySelector("[data-prev]");
-      const nextBtn = document.querySelector("[data-next]");
-      const slides = Array.from(document.querySelectorAll("[data-slide]"));
-      const carousel = document.querySelector("[data-carousel]");
-      const carouselWrap = document.querySelector(".carouselWrap");
+        const setActiveDot = () => {
+          if (!dotsWrap) return;
+          dotsWrap.querySelectorAll(".dot").forEach((d, i) => d.classList.toggle("active", i === index));
+        };
 
-      let index = 0;
-      let timer = null;
-      let startX = 0;
+        const popWrap = () => {
+          if (!carouselWrap) return;
+          carouselWrap.classList.remove("pop");
+          void carouselWrap.offsetWidth;
+          carouselWrap.classList.add("pop");
+        };
 
-      const setActiveDot = () => {
-        if (!dotsWrap) return;
-        dotsWrap.querySelectorAll(".dot").forEach((d, i) => d.classList.toggle("active", i === index));
-      };
+        const goTo = (i) => {
+          index = (i + slides.length) % slides.length;
+          track.style.transform = `translateX(-${index * 100}%)`;
+          setActiveDot();
+          popWrap();
+        };
 
-      const popWrap = () => {
-        if (!carouselWrap) return;
-        carouselWrap.classList.remove("pop");
-        void carouselWrap.offsetWidth; // reflow
-        carouselWrap.classList.add("pop");
-      };
+        const start = () => {
+          stop();
+          timer = setInterval(() => goTo(index + 1), CAROUSEL_AUTOPLAY_MS);
+        };
+        const stop = () => { if (timer) clearInterval(timer); timer = null; };
 
-      const goTo = (i) => {
-        if (!track || slides.length === 0) return;
-        index = (i + slides.length) % slides.length;
-        track.style.transform = `translateX(-${index * 100}%)`;
-        setActiveDot();
-        popWrap();
-      };
+        if (dotsWrap) {
+          dotsWrap.innerHTML = "";
+          slides.forEach((_, i) => {
+            const b = document.createElement("button");
+            b.className = "dot" + (i === 0 ? " active" : "");
+            b.type = "button";
+            b.setAttribute("aria-label", `Ir para foto ${i+1}`);
+            b.addEventListener("click", () => { goTo(i); start(); });
+            dotsWrap.appendChild(b);
+          });
+        }
 
-      const start = () => {
-        stop();
-        timer = setInterval(() => goTo(index + 1), CAROUSEL_AUTOPLAY_MS);
-      };
-      const stop = () => { if (timer) clearInterval(timer); timer = null; };
+        prevBtn?.addEventListener("click", () => { goTo(index - 1); start(); });
+        nextBtn?.addEventListener("click", () => { goTo(index + 1); start(); });
 
-      if (dotsWrap) {
-        slides.forEach((_, i) => {
-          const b = document.createElement("button");
-          b.className = "dot" + (i === 0 ? " active" : "");
-          b.type = "button";
-          b.setAttribute("aria-label", `Ir para foto ${i+1}`);
-          b.addEventListener("click", () => { goTo(i); start(); });
-          dotsWrap.appendChild(b);
-        });
-      }
+        carousel.addEventListener("mouseenter", stop);
+        carousel.addEventListener("mouseleave", start);
+        carousel.addEventListener("touchstart", stop, {passive:true});
+        carousel.addEventListener("touchend", start, {passive:true});
 
-      prevBtn?.addEventListener("click", () => { goTo(index - 1); start(); });
-      nextBtn?.addEventListener("click", () => { goTo(index + 1); start(); });
+        carousel.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, {passive:true});
+        carousel.addEventListener("touchend", (e) => {
+          const endX = e.changedTouches[0].clientX;
+          const diff = endX - startX;
+          if (Math.abs(diff) > 40) goTo(index + (diff < 0 ? 1 : -1));
+          start();
+        }, {passive:true});
 
-      carousel?.addEventListener("mouseenter", stop);
-      carousel?.addEventListener("mouseleave", start);
-      carousel?.addEventListener("touchstart", stop, {passive:true});
-      carousel?.addEventListener("touchend", start, {passive:true});
-
-      carousel?.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, {passive:true});
-      carousel?.addEventListener("touchend", (e) => {
-        const endX = e.changedTouches[0].clientX;
-        const diff = endX - startX;
-        if (Math.abs(diff) > 40) goTo(index + (diff < 0 ? 1 : -1));
+        goTo(0);
         start();
-      }, {passive:true});
+      };
 
-      goTo(0);
-      start();
+      setupCarousel({
+        rootSel: "[data-carousel-hero]",
+        trackSel: "[data-track-hero]",
+        dotsSel: "[data-dots-hero]",
+        prevSel: "[data-prev-hero]",
+        nextSel: "[data-next-hero]",
+        slideSel: "[data-slide-hero]",
+        wrapSel: ".carouselWrapHero"
+      });
+
+      setupCarousel({
+        rootSel: "[data-carousel]",
+        trackSel: "[data-track]",
+        dotsSel: "[data-dots]",
+        prevSel: "[data-prev]",
+        nextSel: "[data-next]",
+        slideSel: "[data-slide]",
+        wrapSel: ".carouselWrap"
+      });
+
+      /* ✅ Carrossel das fotos do conforto (somente mobile, mas pode existir no DOM sempre) */
+      setupCarousel({
+        rootSel: "[data-carousel-comfort]",
+        trackSel: "[data-track-comfort]",
+        dotsSel: "[data-dots-comfort]",
+        prevSel: "[data-prev-comfort]",
+        nextSel: "[data-next-comfort]",
+        slideSel: "[data-slide-comfort]",
+        wrapSel: ".carouselWrapComfort"
+      });
     });
   </script>
 
@@ -872,6 +711,7 @@
         </div>
 
         <nav class="nav" aria-label="Navegação">
+          <a href="#topo">Início</a>
           <a href="#beneficios">Benefícios</a>
           <a href="#conforto">Conforto</a>
           <a href="#como-funciona">Como funciona + cuidados</a>
@@ -881,7 +721,6 @@
           <a href="#contato">Contato</a>
         </nav>
 
-        <!-- MAIS DESTACADO (MESMO TAMANHO) -->
         <a class="btn whats whatsCta" data-whats href="#" rel="noopener">Agendar no WhatsApp</a>
       </div>
     </div>
@@ -908,6 +747,39 @@
             <p class="micro">
               Recomendação média: <strong>10 sessões</strong> (pode variar conforme o organismo).
             </p>
+
+            <div class="carouselWrap carouselWrapHero" aria-label="Carrossel de fotos - Hero" style="margin-top:18px;">
+              <div class="carousel" data-carousel-hero>
+                <div class="track" data-track-hero>
+                  <div class="slide" data-slide-hero>
+                    <img loading="lazy" src="https://i.ibb.co/rR6pVT3h/ANNA-HAIR-9.jpg" alt="Anna Hair - Foto 12" />
+                  </div>
+                  <div class="slide" data-slide-hero>
+                    <img loading="lazy" src="https://i.ibb.co/4Ld3G9q/ANNA-HAIR-7.jpg" alt="Anna Hair - Foto 14" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="carControls">
+                <div class="dots" data-dots-hero aria-label="Indicadores do carrossel - Hero"></div>
+
+                <div class="carBtns">
+                  <button class="iconBtn" type="button" data-prev-hero aria-label="Foto anterior (Hero)">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                      <path d="M15.5 19a1 1 0 0 1-.7-.3l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 1 1 1.4 1.4L10.9 12l5.3 5.3A1 1 0 0 1 15.5 19z" fill="currentColor"></path>
+                    </svg>
+                  </button>
+
+                  <button class="iconBtn" type="button" data-next-hero aria-label="Próxima foto (Hero)">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                      <path d="M8.5 19a1 1 0 0 1-.7-1.7l5.3-5.3-5.3-5.3A1 1 0 1 1 9.2 5.3l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-.7.3z" fill="currentColor"></path>
+                    </svg>
+                  </button>
+
+                  <a class="btn whats" data-whats href="#" rel="noopener" style="box-shadow:none;">Agendar</a>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="heroSide">
@@ -997,7 +869,56 @@
           </div>
         </div>
 
-        <div class="grid2">
+        <!-- ✅ DESKTOP: mantém como está (duas imagens lado a lado) -->
+        <div class="comfortPhotosDesktop">
+          <div class="grid2" style="margin-top:14px;">
+            <div class="panel" style="padding:12px;">
+              <img loading="lazy" src="https://i.ibb.co/xqGYtJTM/ANNA-HAIR-14.jpg" alt="Anna Hair - Foto 11" style="width:100%; border-radius:12px; display:block;" />
+            </div>
+            <div class="panel" style="padding:12px;">
+              <img loading="lazy" src="https://i.ibb.co/cKxf1pWL/ANNA-HAIR-4.jpg" alt="Anna Hair - Foto 17" style="width:100%; border-radius:12px; display:block;" />
+            </div>
+          </div>
+        </div>
+
+        <!-- ✅ MOBILE: vira carrossel -->
+        <div class="comfortPhotosMobile">
+          <div class="carouselWrap carouselWrapComfort" aria-label="Carrossel - Conforto" style="margin-top:14px;">
+            <div class="carousel" data-carousel-comfort>
+              <div class="track" data-track-comfort>
+                <div class="slide" data-slide-comfort>
+                  <img loading="lazy" src="https://i.ibb.co/xqGYtJTM/ANNA-HAIR-14.jpg" alt="Anna Hair - Foto 11" />
+                </div>
+                <div class="slide" data-slide-comfort>
+                  <img loading="lazy" src="https://i.ibb.co/cKxf1pWL/ANNA-HAIR-4.jpg" alt="Anna Hair - Foto 17" />
+                </div>
+              </div>
+            </div>
+
+            <div class="carControls">
+              <div class="dots" data-dots-comfort aria-label="Indicadores do carrossel - Conforto"></div>
+
+              <div class="carBtns">
+                <button class="iconBtn" type="button" data-prev-comfort aria-label="Foto anterior (Conforto)">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M15.5 19a1 1 0 0 1-.7-.3l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 1 1 1.4 1.4L10.9 12l5.3 5.3A1 1 0 0 1 15.5 19z" fill="currentColor"></path>
+                  </svg>
+                </button>
+
+                <button class="iconBtn" type="button" data-next-comfort aria-label="Próxima foto (Conforto)">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M8.5 19a1 1 0 0 1-.7-1.7l5.3-5.3-5.3-5.3A1 1 0 1 1 9.2 5.3l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 0 1-.7.3z" fill="currentColor"></path>
+                  </svg>
+                </button>
+
+                <a class="btn whats" data-whats href="#" rel="noopener" style="box-shadow:none;">Agendar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ✅ AGORA, DEPOIS DAS FOTOS: os dois tópicos (lado a lado no desktop) -->
+        <div class="grid2" style="margin-top:14px;">
           <div class="panel">
             <h3>O que deixa a sessão ainda melhor</h3>
             <ul>
@@ -1006,6 +927,7 @@
               <li>Usar gilete (não cera) antes do protocolo</li>
             </ul>
           </div>
+
           <div class="panel">
             <h3>Uma observação importante</h3>
             <ul>
@@ -1017,7 +939,7 @@
         </div>
       </section>
 
-      <!-- COMO FUNCIONA + CUIDADOS (juntos) -->
+      <!-- COMO FUNCIONA + CUIDADOS -->
       <section id="como-funciona">
         <div class="sectionHead">
           <h2>Como funciona + cuidados</h2>
@@ -1075,77 +997,19 @@
           <div class="carousel" data-carousel>
             <div class="track" data-track>
               <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/5x2z9w9K/ANNA-HAIR-56.jpg" alt="Anna Hair - Foto 56" />
-                <span class="slideLabel">Foto 1</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/qMBP7Ggc/ANNA-HAIR-57.jpg" alt="Anna Hair - Foto 57" />
-                <span class="slideLabel">Foto 2</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/JSTmVdr/ANNA-HAIR-45.jpg" alt="Anna Hair - Foto 45" />
-                <span class="slideLabel">Foto 3</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/XfYC3978/ANNA-HAIR-52.jpg" alt="Anna Hair - Foto 52" />
-                <span class="slideLabel">Foto 4</span>
-              </div>
-
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/HDw0jGhz/ANNA-HAIR-17.jpg" alt="Anna Hair - Foto 17" />
-                <span class="slideLabel">Foto 5</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/zHJwpqqp/ANNA-HAIR-18.jpg" alt="Anna Hair - Foto 18" />
-                <span class="slideLabel">Foto 6</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/NnnRPLv0/ANNA-HAIR-20.jpg" alt="Anna Hair - Foto 20" />
-                <span class="slideLabel">Foto 7</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/8D8vB1Fn/ANNA-HAIR-21.jpg" alt="Anna Hair - Foto 21" />
-                <span class="slideLabel">Foto 8</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/kgZ1w33v/ANNA-HAIR-22.jpg" alt="Anna Hair - Foto 22" />
-                <span class="slideLabel">Foto 9</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/R4JSCK8F/ANNA-HAIR-27.jpg" alt="Anna Hair - Foto 27" />
-                <span class="slideLabel">Foto 10</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/xqGYtJTM/ANNA-HAIR-14.jpg" alt="Anna Hair - Foto 14" />
-                <span class="slideLabel">Foto 11</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/rR6pVT3h/ANNA-HAIR-9.jpg" alt="Anna Hair - Foto 9" />
-                <span class="slideLabel">Foto 12</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/v64Z6rXk/ANNA-HAIR-8.jpg" alt="Anna Hair - Foto 8" />
-                <span class="slideLabel">Foto 13</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/4Ld3G9q/ANNA-HAIR-7.jpg" alt="Anna Hair - Foto 7" />
-                <span class="slideLabel">Foto 14</span>
-              </div>
-              <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/xKWBSdsr/ANNA-HAIR-6.jpg" alt="Anna Hair - Foto 6" />
-                <span class="slideLabel">Foto 15</span>
+                <img loading="lazy" src="https://i.ibb.co/qMBP7Ggc/ANNA-HAIR-57.jpg" alt="Anna Hair - Foto 2" />
               </div>
               <div class="slide" data-slide>
                 <img loading="lazy" src="https://i.ibb.co/KxfR1vmJ/ANNA-HAIR-5.jpg" alt="Anna Hair - Foto 5" />
-                <span class="slideLabel">Foto 16</span>
               </div>
               <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/cKxf1pWL/ANNA-HAIR-4.jpg" alt="Anna Hair - Foto 4" />
-                <span class="slideLabel">Foto 17</span>
+                <img loading="lazy" src="https://i.ibb.co/kgZ1w33v/ANNA-HAIR-22.jpg" alt="Anna Hair - Foto 9" />
               </div>
               <div class="slide" data-slide>
-                <img loading="lazy" src="https://i.ibb.co/6R0S1R3g/ANNA-HAIR-3.jpg" alt="Anna Hair - Foto 3" />
-                <span class="slideLabel">Foto 18</span>
+                <img loading="lazy" src="https://i.ibb.co/xKWBSdsr/ANNA-HAIR-6.jpg" alt="Anna Hair - Foto 15" />
+              </div>
+              <div class="slide" data-slide>
+                <img loading="lazy" src="https://i.ibb.co/KxfR1vmJ/ANNA-HAIR-5.jpg" alt="Anna Hair - Foto 16" />
               </div>
             </div>
           </div>
@@ -1208,7 +1072,6 @@
 
         <div style="height:14px"></div>
 
-        <!-- COMO CHEGAR (antes do contato) -->
         <div class="ctaBlock" id="como-chegar" style="margin-top:14px;">
           <div style="flex:1 1 420px;">
             <h3>Como chegar</h3>
@@ -1259,7 +1122,6 @@
         </p>
       </section>
 
-      <!-- LOCAL / REDES -->
       <section>
         <div class="sectionHead">
           <h2>Anna Hair</h2>
@@ -1304,7 +1166,6 @@
       </footer>
     </div>
 
-    <!-- WhatsApp flutuante -->
     <div class="floatWhats" aria-label="WhatsApp flutuante">
       <a class="whatsFab" data-whats href="#" rel="noopener" aria-label="Falar no WhatsApp">
         <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
